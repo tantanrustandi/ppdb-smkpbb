@@ -9,37 +9,30 @@
 
 </head>
 <body>
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-              
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav mr-auto">
-                <li class="nav-item active">
-                    <a class="nav-link" href="#">Send To Whatsapp <span class="sr-only">(current)</span></a>
-                </li>
-            </ul>
-        </div>
-    </nav>
-
     <div class="jumbotron vertical-center">
     <div class="container center">
         <div class="row">
             <div class="col-xs-12 col-md-6 col-md-offset-6">
-                <h2>Send Message to Whatsapp</h2>
+                <h2>PPDB SMK Pembangunan Bandung Barat</h2>
                 <form>
                     <div class="form-group">
-                        <label for="phone">Phone number</label>
-                        <input type="number" name="phone" id="phone" class="form-control" value="6283180301213">
+                        <label for="text1">Nama Lengkap (Sesuai Ijazah SMP/MTs) </label>
+                        <input type="text" class="form-control" name="text1" id="text1">
                     </div>
                     <div class="form-group">
-                        <label for="text1">Nama</label>
-                        <textarea class="form-control" name="text1" id="text1"></textarea>
+                        <label for="text2">Jenis Kelamin </label>
+                      <select class="custom-select form-control" id="text2" name"text2">
+    <option value="Laki-laki">Laki-laki</option>
+    <option value="Perempuan">Perempuan</option>
+  </select>
                     </div>
-                    <div class="form-group">
-                        <label for="text2">Kelas</label>
-                        <textarea class="form-control" name="text2" id="text2"></textarea>
+                     <div class="form-group">
+                        <label for="text3">NISN (Nomor Induk Siswa Nasional) </label>
+                        <input type="number" class="form-control" name="text3" id="text3">
+                    </div>
+                     <div class="form-group">
+                        <label for="text4">NIK (Nomor Induk Kependudukan)</label>
+                        <input type="number" class="form-control" name="text4" id="text4">
                     </div>
                     <button type="button" class="btn btn-primary col-xs-12" id="send">Send</button>
                 </form>
@@ -54,22 +47,19 @@
     $(document).ready(function(){
         var btnSend = $('#send');
         btnSend.click(function (){
-            var phone = $('#phone').val();
-            if (!phone) {
-                swal('Please enter a phone number');
-                return;
-            }
             var text1 = $('#text1').val();
             if (!text1) {
                 swal("Masukan Nama");
                 return;
             }
             var text2 = $('#text2').val();
-            if (!text2) {
-                swal("Masukan Kelas");
+            var text3 = $('#text3').val();
+            var text4 = $('#text4').val();
+            if (! text4) {
+                swal("Masukan NIK");
                 return;
             }
-            var url = 'http://api.whatsapp.com/send?phone='+ phone + '&text=Nama : ' + text1 + '%0AKelas : ' +text2;
+            var url = 'http://api.whatsapp.com/send?phone=6283180301213&text=Nama Lengkap : ' + text1 + '%0AJenis Kelamin : ' + text2 + '%0ANISN (Nomor Induk Siswa Nasional) : ' + text3 + '%0ANIK (Nomor Induk Kependudukan) : ' + text4;
             var win = window.open(url , '_blank');
             win.focus();
         });
