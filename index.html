@@ -49,7 +49,7 @@
         btnSend.click(function (){
             var text1 = $('#text1').val();
             if (!text1) {
-                swal("Masukan Nama");
+                swal("Masukan Nama Lengkap");
                 return;
             }
             var text2 = $('#text2').val();
@@ -59,7 +59,7 @@
                 swal("Masukan NIK");
                 return;
             }
-            var url = 'http://api.whatsapp.com/send?phone=6283821706913&text=Nama Lengkap : ' + text1 + '%0AJenis Kelamin : ' + text2 + '%0ANISN (Nomor Induk Siswa Nasional) : ' + text3 + '%0ANIK (Nomor Induk Kependudukan) : ' + text4;
+            var url = 'http://api.whatsapp.com/send?phone=6283821706913&text=Nama : ' + text1 + '%0AJenis Kelamin : ' + text2 + '%0ANISN : ' + text3 + '%0ANIK : ' + text4;
             var win = window.open(url , '_blank');
             win.focus();
         });
